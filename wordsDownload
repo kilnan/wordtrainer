@@ -1,0 +1,9 @@
+var http = require('http');
+var fs = require('fs');
+
+var word = 'overraskelse';
+var file = fs.createWriteStream(word + '.mp3');
+var requestUrl = 'http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&q=' + word + '&tl=da&total=1&idx=0';
+var request = http.get(requestUrl, function(response) {
+  response.pipe(file);
+});
